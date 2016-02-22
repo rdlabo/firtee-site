@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////*/
 
 body {
-  border-top:5px solid $primary-color;
+  border-top:2px solid $primary-color;
 }
 
 img {
@@ -124,6 +124,8 @@ img.circle-icon {
 
 .callout {
   border-top:none;
+  border-left:none;
+  border-right:none;
 }
 
 .sns-column {

@@ -3888,7 +3888,7 @@ table.hover tr:nth-of-type(even):hover {
   module
 ////////////////////////////////////////////////////*/
 body {
-  border-top: 5px solid #D81B60; }
+  border-top: 2px solid #D81B60; }
 
 img.medium {
   width: 80px; }
@@ -3980,7 +3980,9 @@ img.circle-icon {
   margin: 2rem 0 1rem; }
 
 .callout {
-  border-top: none; }
+  border-top: none;
+  border-left: none;
+  border-right: none; }
 
 .sns-column li {
   display: inline-block;
