@@ -3,3 +3,4 @@ node_modules/
 npm-debug.log
 .idea/radyapp.github.io.iml
 bower_components/
+profiles_settings.xml
