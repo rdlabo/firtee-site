@@ -4010,3 +4010,20 @@ footer {
     padding-right: 10px; }
   .row.column.text-center.header-inner, .row.text-center.header-inner.columns {
     padding: 1rem 0 2rem; } }
+
+section.sub {
+  padding: 10px; }
+  section.sub h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0 10px 2px;
+    text-shadow: none;
+    color: #333;
+    border-bottom: 2px dotted #D81B60; }
+  section.sub dt {
+    font-size: 1.1rem; }
+  section.sub dd + dt {
+    margin-top: 15px; }
+  section.sub li + li {
+    margin-top: 8px; }

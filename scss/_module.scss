@@ -175,6 +175,29 @@ footer {
   .row.column.text-center.header-inner {
     padding: 1rem 0 2rem;
   }
+}
 
+section.sub {
+  padding: 10px;
 
+  h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0 10px 2px;
+    text-shadow: none;
+    color: #333;
+    border-bottom: 2px dotted $primary-color;
+  }
+
+  dt {
+    font-size: 1.1rem;
+  }
+
+  dd + dt {
+    margin-top: 15px;
+  }
+  li + li {
+    margin-top: 8px;
+  }
 }
