@@ -78,12 +78,16 @@ h1 {
   text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
+h3.name{
+  font-size: 1.2rem;
+}
+
 .callout.large.header {
   background: url('../img/bg.png') center 20% no-repeat;
   background-size: cover;
   padding-bottom: 4rem;
   .button {
-    box-shadow: rgba(90, 89, 89, 0.39) 4px 2px 2px -1px;
+    //box-shadow: rgba(90, 89, 89, 0.39) 4px 2px 2px -1px;
   }
 }
 
@@ -125,6 +129,11 @@ img.circle-icon {
   border-top:none;
   border-left:none;
   border-right:none;
+}
+
+.history {
+  max-height:200px;
+  overflow-y: scroll;
 }
 
 .sns-column {
