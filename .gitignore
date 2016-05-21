@@ -4,3 +4,4 @@ npm-debug.log
 .idea/radyapp.github.io.iml
 bower_components/
 profiles_settings.xml
+.DS_Store
