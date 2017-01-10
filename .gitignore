@@ -1,7 +1,7 @@
 node_modules/
 */.DS_Store
 npm-debug.log
-.idea/radyapp.github.io.iml
+.idea/
 bower_components/
 profiles_settings.xml
 .DS_Store
