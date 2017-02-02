@@ -86,12 +86,17 @@ ul.flex-button {
   margin:0;padding:0;
   li {
     margin:0 1rem;
+    img {
+      min-width:135px;
+      min-height:40px;
+    }
     .web-button {
       color:$white;
       text-align:center;
-      background-color: #000;
+
       width:135px;
       height:40px;
+      background-color: #000;
       display:inline-block;
       border-radius:6px;
       padding-top:8px;

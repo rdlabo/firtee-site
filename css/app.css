@@ -3753,12 +3753,15 @@ ul.flex-button {
   padding: 0; }
   ul.flex-button li {
     margin: 0 1rem; }
+    ul.flex-button li img {
+      min-width: 135px;
+      min-height: 40px; }
     ul.flex-button li .web-button {
       color: #fefefe;
       text-align: center;
-      background-color: #000;
       width: 135px;
       height: 40px;
+      background-color: #000;
       display: inline-block;
       border-radius: 6px;
       padding-top: 8px;
