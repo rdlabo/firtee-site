@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var $    = require('gulp-load-plugins')();
-var browserSync = require("browser-sync");
+let gulp = require('gulp');
+let $    = require('gulp-load-plugins')();
+let browserSync = require("browser-sync");
 
 // browserSyncのリロード
-var reload  = browserSync.reload;
+let reload  = browserSync.reload;
 
-var sassPaths = [
+let sassPaths = [
   'bower_components/foundation-sites/scss',
   'bower_components/motion-ui/src'
 ];
