@@ -45,7 +45,7 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(600);
 $global-lineheight: 1.5;
 $primary-color: #D81B60;
 $secondary-color: #777;
@@ -110,7 +110,7 @@ $header-sizes: (
   ),
   medium: (
     'h1': 48,
-    'h2': 35,
+    'h2': 28,
     'h3': 28,
     'h4': 25,
     'h5': 20,

@@ -431,7 +431,7 @@ button {
   display: none !important; }
 
 .row {
-  max-width: 75rem;
+  max-width: 37.5rem;
   margin-left: auto;
   margin-right: auto; }
   .row::before, .row::after {
@@ -1248,7 +1248,7 @@ h6 {
   h1 {
     font-size: 3rem; }
   h2 {
-    font-size: 2.1875rem; }
+    font-size: 1.75rem; }
   h3 {
     font-size: 1.75rem; }
   h4 {
@@ -1269,7 +1269,7 @@ a {
     border: 0; }
 
 hr {
-  max-width: 75rem;
+  max-width: 37.5rem;
   height: 0;
   border-right: 0;
   border-top: 0;
@@ -2795,7 +2795,7 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal {
       width: 600px;
-      max-width: 75rem; } }
+      max-width: 37.5rem; } }
   @media screen and (min-width: 40em) {
     .reveal .reveal {
       left: auto;
@@ -2806,15 +2806,15 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal.tiny {
       width: 30%;
-      max-width: 75rem; } }
+      max-width: 37.5rem; } }
   @media screen and (min-width: 40em) {
     .reveal.small {
       width: 50%;
-      max-width: 75rem; } }
+      max-width: 37.5rem; } }
   @media screen and (min-width: 40em) {
     .reveal.large {
       width: 90%;
-      max-width: 75rem; } }
+      max-width: 37.5rem; } }
   .reveal.full {
     top: 0;
     left: 0;
@@ -3808,9 +3808,7 @@ ul.flex-button {
     width: 150px; }
 
 .sub-page .sub {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 0.8rem; }
+  margin: auto; }
   .sub-page .sub h2 {
     text-align: center;
     margin: 2rem 0 1rem; }
