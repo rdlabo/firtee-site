@@ -431,7 +431,7 @@ button {
   display: none !important; }
 
 .row {
-  max-width: 37.5rem;
+  max-width: 50rem;
   margin-left: auto;
   margin-right: auto; }
   .row::before, .row::after {
@@ -1269,7 +1269,7 @@ a {
     border: 0; }
 
 hr {
-  max-width: 37.5rem;
+  max-width: 50rem;
   height: 0;
   border-right: 0;
   border-top: 0;
@@ -2795,7 +2795,7 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal {
       width: 600px;
-      max-width: 37.5rem; } }
+      max-width: 50rem; } }
   @media screen and (min-width: 40em) {
     .reveal .reveal {
       left: auto;
@@ -2806,15 +2806,15 @@ body.is-reveal-open {
   @media screen and (min-width: 40em) {
     .reveal.tiny {
       width: 30%;
-      max-width: 37.5rem; } }
+      max-width: 50rem; } }
   @media screen and (min-width: 40em) {
     .reveal.small {
       width: 50%;
-      max-width: 37.5rem; } }
+      max-width: 50rem; } }
   @media screen and (min-width: 40em) {
     .reveal.large {
       width: 90%;
-      max-width: 37.5rem; } }
+      max-width: 50rem; } }
   .reveal.full {
     top: 0;
     left: 0;
@@ -3692,11 +3692,33 @@ img.medium {
 img.circle {
   border-radius: 100%; }
 
+.photo-area {
+  overflow: hidden; }
+
 @media screen and (max-width: 640px) {
   .callout.large.header {
     padding: 3rem 1rem 0; }
   .callout.large.header .lead {
-    font-size: 95%; } }
+    font-size: 95%; }
+  .article {
+    padding: 1rem 1.5rem 2rem; } }
+
+@media screen and (min-width: 640px) {
+  .photo-area {
+    height: 400px; }
+  .article {
+    padding: 2rem 1.5rem 0; } }
+
+/*////////////////////////////////////////////////////
+
+  フォント
+
+////////////////////////////////////////////////////*/
+h3 {
+  font-size: 1.2rem; }
+  h3.name {
+    font-size: 1rem;
+    margin: 1rem 0 2rem; }
 
 /*////////////////////////////////////////////////////
 
@@ -3709,10 +3731,6 @@ img.circle {
 
 .font-point {
   margin: 0 0 2rem; }
-
-h3.name {
-  font-size: 1rem;
-  margin: 1rem 0 2rem; }
 
 .callout.large.header {
   padding-bottom: 4rem;
@@ -3777,6 +3795,9 @@ ul.flex-button {
   color: #fff; }
   .bg-colored.first-color {
     background-color: #78909C; }
+    .bg-colored.first-color a {
+      color: #fff;
+      text-decoration: underline; }
   .bg-colored.second-color {
     color: #3E2723;
     background-color: #EFEBE9; }
@@ -3787,17 +3808,18 @@ ul.flex-button {
     padding: 2rem;
     background-color: #000000; }
 
-.article {
-  padding: 2rem 1.5rem 1.5rem; }
-  .article h3 {
-    margin-bottom: 1rem; }
-  .article p {
-    font-size: 0.9rem; }
-  .article .flex-article {
-    display: -ms-flexbox;
-    display: flex; }
-    .article .flex-article .image-box {
-      max-width: 40%; }
+.article h3 {
+  margin: 2rem 0 2rem; }
+
+.article p {
+  font-size: 1rem;
+  margin-bottom: 10px; }
+
+.article .flex-article {
+  display: -ms-flexbox;
+  display: flex; }
+  .article .flex-article .image-box {
+    max-width: 40%; }
 
 /*////////////////////////////////////////////////////
 
