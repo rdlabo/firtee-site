@@ -3419,6 +3419,9 @@ img.medium {
 img.circle {
   border-radius: 100%; }
 
+.padding {
+  padding: 1rem 0 2rem; }
+
 .hero-area {
   -ms-flex-pack: center;
       justify-content: center;
