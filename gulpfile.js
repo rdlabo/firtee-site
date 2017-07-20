@@ -1,25 +1,24 @@
-let gulp = require('gulp');
-let $    = require('gulp-load-plugins')();
-let browserSync = require("browser-sync");
-
-// browserSyncのリロード
-let reload  = browserSync.reload;
-
-let sassPaths = [
-  'bower_components/foundation-sites/scss',
-  'bower_components/motion-ui/src'
+const gulp = require('gulp');
+const $    = require('gulp-load-plugins')();
+const browserSync = require("browser-sync");
+const minifycss = require('gulp-minify-css');
+const reload  = browserSync.reload;
+const sassPaths = [
+    'node_modules/foundation-sites/scss',
+    'node_modules/motion-ui/src'
 ];
 
 gulp.task('sass', function() {
-  return gulp.src('scss/app.scss')
-    .pipe($.sass({
-      includePaths: sassPaths
-    })
-      .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
-    .pipe(gulp.dest('www/'));
+    return gulp.src('scss/app.scss')
+        .pipe($.sass({
+            includePaths: sassPaths
+        })
+            .on('error', $.sass.logError))
+        .pipe($.autoprefixer({
+            browsers: ['last 2 versions', 'ie >= 9']
+        }))
+        .pipe(minifycss())
+        .pipe(gulp.dest('./www'));
 });
 
 // browserSync ルートはdest
