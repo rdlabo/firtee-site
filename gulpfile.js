@@ -19,21 +19,21 @@ gulp.task('sass', function() {
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('www/'));
 });
 
 // browserSync ルートはdest
 gulp.task("browserSync", function () {
    browserSync.init({
        server: {
-           baseDir: "./" // ルートとなるディレクトリを指定
+           baseDir: "./www" // ルートとなるディレクトリを指定
        }
    });
 });
 
 gulp.task("watch",function(){
    gulp.watch('scss/**/*.scss', ['sass']),
-   gulp.watch(['**/*.html',　'**/*.css'], reload);
+   gulp.watch(['www/**/*.html',　'www/**/*.css'], reload);
 });
 
-gulp.task("default",["watch", "browserSync"])
+gulp.task("default",["watch", "browserSync"]);

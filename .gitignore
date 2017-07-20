@@ -1,7 +1,4 @@
 node_modules/
-*/.DS_Store
 npm-debug.log
 .idea/
-bower_components/
-profiles_settings.xml
 .DS_Store
