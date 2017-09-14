@@ -173,11 +173,13 @@ ul.sns-column {
 
 ul.flex-button {
   display:flex;
+  flex-wrap: wrap;
+  margin:0;padding:0;
   list-style-type:none;
   justify-content:center;
-  margin:0;padding:0;
+
   li {
-    margin:0 1rem;
+    margin:0 1rem 1rem 0;
     img {
       min-width:135px;
       min-height:40px;
@@ -198,7 +200,6 @@ ul.flex-button {
 }
 
 footer {
-
   ul.flex-button {
     flex-wrap: wrap;
   }
