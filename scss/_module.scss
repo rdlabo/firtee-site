@@ -200,8 +200,11 @@ ul.flex-button {
 }
 
 footer {
+  margin: 1rem 1rem;
+  border-top: 1px solid $light-gray;
   ul.flex-button {
     flex-wrap: wrap;
+    font-size: 0.85rem;
   }
 }
 

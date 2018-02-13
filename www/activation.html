@@ -1,0 +1,120 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>tipsys｜都内で女友達を探す女性専用マッチングサービス</title>
+	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="fonts/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@tipsys_info">
+	<meta name="twitter:title" content="tipsys.me">
+	<meta name="twitter:description" content="女友だちをつくる女性専用ソーシャルサービス">
+	<meta name="twitter:image" content="https://tipsys.me/img/ogp.jpg">
+
+	<meta property="og:title" content="tipsys.me">
+	<meta name="description" content="女友だちをつくる女性専用ソーシャルサービス">
+	<meta name="keywords" content="radyapp,tipsys,東京姉妹,合コン,夜遊び,飲み会,友達募集,アプリ">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://tipsys.me/">
+	<meta property="og:site_name" content="tipsys.me">
+	<meta property="og:description" content="女友だちをつくる女性専用ソーシャルサービス">
+	<meta property="og:image" content="https://tipsys.me/img/ogp.jpg">
+</head>
+
+<body class="sub-page">
+<header>
+	<div class="row">
+		<a href="index.html"><img src="img/logo_tipsys01.svg" alt="tipsys" width="300"></a>
+	</div>
+</header>
+
+<div class="row">
+	<section class="sub columns medium-8 small-12" id="verifyEmailSuccess" style="display:none;">
+		<h3>メールアドレスの確認</h3>
+		<p>
+			メールアドレス認証に成功しました。アプリに戻って、tipsysをご利用ください。
+		</p>
+	</section>
+
+	<section class="sub columns medium-8 small-12" id="verifyEmailFail" style="display:none;">
+		<h3>確認できませんでした。再度お試しください</h3>
+		<p>
+			メールアドレスの確認を試みましたが、このURLは期限が切れているか、すでに確認が完了しています。
+		</p>
+	</section>
+
+	<section class="sub columns medium-8 small-12" id="methodFail" style="display:none;">
+		<h3>確認できませんでした</h3>
+		<p>
+			このURLは許可されておりません。
+		</p>
+	</section>
+</div>
+<footer class="article">
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="flex-button">
+				<li><a href="index.html">トップページ</a></li>
+				<li><a href="policy.html">利用規約</a></li>
+				<li><a href="privacy.html">プライバシーポリシー</a></li>
+				<li><a href="https://rdlabo.jp/support_tipsys">特定商取引法表記 / サポート</a></li>
+			</ul>
+			<br />
+			<div class="text-center"><small>© 2016 tipsys.me</small></div>
+		</div>
+	</div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mode = getParameterByName('mode');
+        const actionCode = getParameterByName('oobCode');
+        const continueUrl = getParameterByName('continueUrl');
+        const config = {
+            'apiKey': 'AIzaSyClCsmx0yHhYcYDkqHnwp1ReG04ov66j78'
+        };
+        const app = firebase.initializeApp(config);
+        const auth = app.auth();
+
+        switch (mode) {
+            case 'verifyEmail':
+                handleVerifyEmail(auth, actionCode, continueUrl);
+                break;
+            default:
+
+                const selectDom = document.querySelector('#methodFail');
+                selectDom.style.display = 'block';
+        }
+    }, false);
+
+    function handleVerifyEmail(auth, actionCode, continueUrl) {
+        auth.applyActionCode(actionCode).then(function(resp) {
+            // 認証に成功した時
+            const selectDom = document.querySelector('#verifyEmailSuccess');
+            selectDom.style.display = 'block';
+        }).catch(function(error) {
+            // 認証に失敗した時
+            const selectDom = document.querySelector('#verifyEmailFail');
+            selectDom.style.display = 'block';
+        });
+    }
+
+    function getParameterByName( name ){
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null )
+            return "";
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+</script>
+
+</body>
+</html>
