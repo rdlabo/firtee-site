@@ -134,7 +134,7 @@ h3 {
 }
 
 .callout.large.header {
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   .button {
     //box-shadow: rgba(90, 89, 89, 0.39) 4px 2px 2px -1px;
   }
@@ -145,7 +145,9 @@ h3 {
     max-width: 55rem;
     padding: 1rem 2rem 2rem;
   }
+
 }
+
 
 
 ul.sns-column {
@@ -187,6 +189,7 @@ ul.flex-button {
     .web-button {
       color:$white;
       text-align:center;
+      font-weight:bold;
 
       width:135px;
       height:40px;
