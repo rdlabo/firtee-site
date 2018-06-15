@@ -148,7 +148,25 @@ h3 {
 
 }
 
+dl.news {
+  display:flex;
+  width: 100%;
+  flex-wrap: wrap;
 
+  dt, dd {
+    margin-bottom:10px;
+  }
+
+  dt {
+    width:20%;
+    text-align: right;
+    margin-right: 5%;
+  }
+
+  dd {
+    width: 65%;
+  }
+}
 
 ul.sns-column {
   display:flex;
@@ -294,6 +312,35 @@ footer {
 
     dt {
       margin-top:1rem;
+    }
+  }
+
+  .blog {
+    margin:auto;
+
+    h3 {
+      margin:3rem 0 1.5rem;
+      font-weight:bold;
+    }
+
+
+    h4 {
+      margin:1rem auto 1.5rem;
+      font-size:1.2rem;
+      display:inline-block;
+      border-bottom: 2px solid $black;
+    }
+
+    p,dd,dt {
+      font-size: 0.9rem;
+      line-height: 1.8rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+      th {
+        min-width: 80px;
+      }
     }
   }
 }
