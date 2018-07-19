@@ -217,6 +217,42 @@ ul.flex-button {
   }
 }
 
+table.plans {
+  margin:auto;
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background-color: transparent;
+
+  thead, thead th {
+    background-color: $white;
+    text-align:center;
+    font-weight: normal;
+    font-size: 0.8rem;
+    padding-top:15px;
+
+    span {
+      display:block;
+      font-size: 1.5rem;
+      padding-top:2px;
+      font-weight: bold;
+
+      small {
+        font-size: 0.8rem;
+        padding: 0 5px;
+      }
+    }
+  }
+
+  tbody, tbody th, tbody td, tbody tr:nth-child(even) {
+    text-align:center;
+    font-size: 0.85rem;
+    color: $black;
+  }
+}
+
+
 footer {
   margin: 1rem 1rem;
   border-top: 1px solid $light-gray;
