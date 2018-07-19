@@ -47,6 +47,29 @@
 		</p>
 	</section>
 
+	<section class="sub columns medium-8 small-12" id="methodReset" style="display:none;">
+		<h3>変更後のパスワード</h3>
+		<label>パスワード
+			<input type="text" id="changePasswordValue" placeholder="変更するパスワードをご入力ください">
+		</label>
+		<button class="button small" onclick="handleResetPassword();">パスワード決定</button>
+	</section>
+
+
+	<section class="sub columns medium-8 small-12" id="resetPasswordSuccess" style="display:none;">
+		<h3>パスワード変更の確認</h3>
+		<p>
+			パスワード変更の成功しました。アプリに戻って、tipsysをご利用ください。
+		</p>
+	</section>
+
+	<section class="sub columns medium-8 small-12" id="resetPasswordFail" style="display:none;">
+		<h3>確認できませんでした。再度お試しください</h3>
+		<p>
+			パスワード変更を試みましたが、このURLは期限が切れているか、すでに変更が完了しています。
+		</p>
+	</section>
+
 	<section class="sub columns medium-8 small-12" id="methodFail" style="display:none;">
 		<h3>確認できませんでした</h3>
 		<p>
@@ -71,49 +94,75 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mode = getParameterByName('mode');
-        const actionCode = getParameterByName('oobCode');
-        const continueUrl = getParameterByName('continueUrl');
-        const config = {
-            'apiKey': 'AIzaSyClCsmx0yHhYcYDkqHnwp1ReG04ov66j78'
-        };
-        const app = firebase.initializeApp(config);
-        const auth = app.auth();
+  let actionCode, continueUrl, auth;
 
-        switch (mode) {
-            case 'verifyEmail':
-                handleVerifyEmail(auth, actionCode, continueUrl);
-                break;
-            default:
+  document.addEventListener('DOMContentLoaded', function() {
+    const mode = getParameterByName('mode');
+    const config = {
+      'apiKey': 'AIzaSyClCsmx0yHhYcYDkqHnwp1ReG04ov66j78'
+    };
+    const app = firebase.initializeApp(config);
+    actionCode = getParameterByName('oobCode');
+    continueUrl = getParameterByName('continueUrl');
+    auth = app.auth();
 
-                const selectDom = document.querySelector('#methodFail');
-                selectDom.style.display = 'block';
-        }
-    }, false);
-
-    function handleVerifyEmail(auth, actionCode, continueUrl) {
-        auth.applyActionCode(actionCode).then(function(resp) {
-            // 認証に成功した時
-            const selectDom = document.querySelector('#verifyEmailSuccess');
-            selectDom.style.display = 'block';
-        }).catch(function(error) {
-            // 認証に失敗した時
-            const selectDom = document.querySelector('#verifyEmailFail');
-            selectDom.style.display = 'block';
-        });
+    switch (mode) {
+      case 'verifyEmail':
+        handleVerifyEmail(auth, actionCode, continueUrl);
+        break;
+      case 'resetPassword':
+        const selectDomReset = document.querySelector('#methodReset');
+        selectDomReset.style.display = 'block';
+        break;
+      default:
+        const selectDomFail = document.querySelector('#methodFail');
+        selectDomFail.style.display = 'block';
     }
+  }, false);
 
-    function getParameterByName( name ){
-        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-        const regexS = "[\\?&]"+name+"=([^&#]*)";
-        const regex = new RegExp( regexS );
-        const results = regex.exec( window.location.href );
-        if( results == null )
-            return "";
-        else
-            return decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
+  function handleVerifyEmail(auth, actionCode, continueUrl) {
+    auth.applyActionCode(actionCode).then(function(resp) {
+      const selectDom = document.querySelector('#verifyEmailSuccess');
+      selectDom.style.display = 'block';
+    }).catch(function(error) {
+      const selectDom = document.querySelector('#verifyEmailFail');
+      selectDom.style.display = 'block';
+    });
+  }
+
+  function getParameterByName( name ){
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    const regexS = "[\\?&]"+name+"=([^&#]*)";
+    const regex = new RegExp( regexS );
+    const results = regex.exec( window.location.href );
+    if( results == null )
+      return "";
+    else
+      return decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+  function handleResetPassword() {
+    const newPassword = document.getElementById('changePasswordValue').value;
+    if(newPassword.length < 6) {
+      alert('パスワードの文字数が少なすぎます。6文字以上をご入力ください');
+      return;
+		}
+
+    auth.confirmPasswordReset(actionCode, newPassword).then(function(resp) {
+      const selectDomReset = document.querySelector('#methodReset');
+      selectDomReset.style.display = 'none';
+
+      const selectDomResetSuccess = document.querySelector('#resetPasswordSuccess');
+      selectDomResetSuccess.style.display = 'block';
+    }).catch(function(error) {
+      const selectDomReset = document.querySelector('#methodReset');
+      selectDomReset.style.display = 'none';
+
+      const selectDomResetSuccess = document.querySelector('#resetPasswordFail');
+      selectDomResetSuccess.style.display = 'block';
+    });
+  }
+
 </script>
 
 </body>
