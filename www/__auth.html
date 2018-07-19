@@ -47,6 +47,23 @@
 		</p>
 	</section>
 
+
+	<section class="sub columns medium-8 small-12" id="methodResetEmail" style="display:none;">
+		<h3>パスワードを変更するメールアドレス</h3>
+		<p>tipsysでご利用しているメールアドレスを入力ください。そのメールアドレスにパスワードを変更するためのURLを記載したメールをお送りいたします。</p>
+		<label>メールアドレス
+			<input type="text" id="changePasswordEmailValue" placeholder="利用してるメールアドレスを入力ください">
+		</label>
+		<button class="button small" onclick="handleResetEmailPassword();">パスワードリセットのリクエスト</button>
+	</section>
+
+	<section class="sub columns medium-8 small-12" id="resetPasswordEmailSuccess" style="display:none;">
+		<h3>パスワード変更の確認メールをお送りしました</h3>
+		<p>
+			パスワード変更の確認メールをお送りしました。メールを確認して、記載されているURLにからパスワードをご変更ください。
+		</p>
+	</section>
+
 	<section class="sub columns medium-8 small-12" id="methodReset" style="display:none;">
 		<h3>変更後のパスワード</h3>
 		<label>パスワード
@@ -54,7 +71,6 @@
 		</label>
 		<button class="button small" onclick="handleResetPassword();">パスワード決定</button>
 	</section>
-
 
 	<section class="sub columns medium-8 small-12" id="resetPasswordSuccess" style="display:none;">
 		<h3>パスワード変更の確認</h3>
@@ -110,6 +126,10 @@
       case 'verifyEmail':
         handleVerifyEmail(auth, actionCode, continueUrl);
         break;
+      case 'resetPasswordEmail':
+        const selectDomResetEmail = document.querySelector('#methodResetEmail');
+        selectDomResetEmail.style.display = 'block';
+        break;
       case 'resetPassword':
         const selectDomReset = document.querySelector('#methodReset');
         selectDomReset.style.display = 'block';
@@ -141,6 +161,20 @@
       return decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
+  function handleResetEmailPassword() {
+    const accountEmail = document.getElementById('changePasswordEmailValue').value;
+    auth.sendPasswordResetEmail(accountEmail).then(function() {
+      const selectDomReset = document.querySelector('#methodResetEmail');
+      selectDomReset.style.display = 'none';
+
+      const selectDomResetSuccess = document.querySelector('#resetPasswordEmailSuccess');
+      selectDomResetSuccess.style.display = 'block';
+    }).catch(function(error) {
+      console.log(error);
+      alert('tipsysでご利用いただいていないメールアドレスです。ご確認いただきまして、再度送信ください。');
+    });
+  }
+
   function handleResetPassword() {
     const newPassword = document.getElementById('changePasswordValue').value;
     if(newPassword.length < 6) {
@@ -148,12 +182,20 @@
       return;
 		}
 
-    auth.confirmPasswordReset(actionCode, newPassword).then(function(resp) {
-      const selectDomReset = document.querySelector('#methodReset');
-      selectDomReset.style.display = 'none';
+    auth.verifyPasswordResetCode(actionCode).then(function(email) {
+      auth.confirmPasswordReset(actionCode, newPassword).then(function(resp) {
+        const selectDomReset = document.querySelector('#methodReset');
+        selectDomReset.style.display = 'none';
 
-      const selectDomResetSuccess = document.querySelector('#resetPasswordSuccess');
-      selectDomResetSuccess.style.display = 'block';
+        const selectDomResetSuccess = document.querySelector('#resetPasswordSuccess');
+        selectDomResetSuccess.style.display = 'block';
+      }).catch(function(error) {
+        const selectDomReset = document.querySelector('#methodReset');
+        selectDomReset.style.display = 'none';
+
+        const selectDomResetSuccess = document.querySelector('#resetPasswordFail');
+        selectDomResetSuccess.style.display = 'block';
+      });
     }).catch(function(error) {
       const selectDomReset = document.querySelector('#methodReset');
       selectDomReset.style.display = 'none';
